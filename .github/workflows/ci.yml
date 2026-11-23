@@ -1,0 +1,41 @@
+name: CI - Cypress QA Hub
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Lint, Syntax & Cypress Verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Syntax & Script Validation
+        run: |
+          node --check scripts/run-battery.cjs
+          node --check scripts/infra-checker.cjs
+          node --check scripts/cypress-runner.cjs
+          node --check cypress.config.js
+
+      - name: Verify Cypress Binary
+        run: npx cypress verify
+
+      - name: Validate Runner CLI Help Flag
+        run: node scripts/run-battery.cjs --help

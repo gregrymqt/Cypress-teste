@@ -16,6 +16,26 @@ const { runInfraCheck } = require('./infra-checker.cjs');
 
 // Parse CLI arguments
 const args = process.argv.slice(2);
+
+// Handle help flag cleanly without executing Cypress
+if (args.includes('--help') || args.includes('-h')) {
+  console.log(`
+Universal Autonomous QA Battery Runner
+Usage:
+  node scripts/run-battery.cjs [options]
+
+Options:
+  --url=<url>            Target application base URL (default: http://localhost)
+  --repo=<path>          Target repository path for contracts & domain specs
+  --stage=<stage>        Execution stage: all, smoke, api, ui, desktop, mobile, full
+  --browser=<browser>    Browser to run: chrome, electron, firefox, edge
+  --headed               Run tests with browser UI visible
+  --safe-mode            Force read-only testing (no destructive clicks/inputs)
+  --allow-mutations      Allow mutation/write operations against target
+  --help, -h             Show this help message
+`);
+  process.exit(0);
+}
 function getArg(key, defaultValue = '') {
   const prefix = `--${key}=`;
   const found = args.find((a) => a.startsWith(prefix));
