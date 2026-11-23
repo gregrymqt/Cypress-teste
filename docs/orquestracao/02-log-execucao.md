@@ -81,3 +81,9 @@
 - Corrigida detecção de portas AMQP do RabbitMQ no `scripts/infra-checker.cjs` e substituído seletor Sizzle inválido no menu de `03-mobile-fuzzer.cy.js` por filtragem DOM nativa.
 - Blindada a configuração do Nginx (`infra/nginx/conf.d/default.conf`) com headers obrigatórios de Clickjacking (`X-Frame-Options: SAMEORIGIN`) no server/SPA.
 - Executada bateria completa (`--stage=full`): **32 testes aprovados de 32 (100% GREEN, 0 falhas)** em 76.1s cobrindo Universal API, Fuzzers Desktop/Mobile e as 3 Specs de Domínio.
+
+
+## [2026-11-22] Lote 1: Git Hygiene, PRs com CI & Atalhos do Hub
+- **Gestao-Restaurante**: Criada branch `feat/qa-contracts-security-and-frontend-cleanup` com 2 commits atômicos (QA/Infra e Frontend AbortSignal), aberto PR #25 com 100% de aprovação no CI (6 jobs) e realizado squash/merge na `main`.
+- **Cypress-teste**: Criado repositório público `gregrymqt/Cypress-teste` no GitHub, branch `feat/qa-shortcuts-and-ci` com 2 commits (atalhos `qa:smoke`/`qa:all`/`qa:full` no `package.json`, suporte a `--help` em `run-battery.cjs` e workflow GitHub Actions), aberto PR #1, validado CI e mergeado na `main`.
+- **Higienização**: Árvores de trabalho de ambos os repositórios limpas e sincronizadas com `origin/main`.
