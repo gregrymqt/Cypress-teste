@@ -1,0 +1,22 @@
+{
+  "name": "cypress-central-hub",
+  "version": "2.0.0",
+  "description": "Universal Autonomous Testing & QA Hub (Black-Box & White-Box)",
+  "scripts": {
+    "qa:battery": "node scripts/run-battery.cjs",
+    "qa:url": "node scripts/run-battery.cjs",
+    "qa:repo": "node scripts/run-battery.cjs",
+    "qa:api": "node scripts/run-battery.cjs --stage=api",
+    "qa:ui": "node scripts/run-battery.cjs --stage=ui",
+    "qa:desktop": "node scripts/run-battery.cjs --stage=desktop",
+    "qa:mobile": "node scripts/run-battery.cjs --stage=mobile",
+    "infra:check": "node scripts/infra-checker.cjs",
+    "cypress": "node scripts/cypress-runner.cjs",
+    "cypress:open": "node scripts/cypress-runner.cjs open",
+    "cypress:run": "node scripts/cypress-runner.cjs run",
+    "test": "node scripts/run-battery.cjs"
+  },
+  "devDependencies": {
+    "cypress": "^16.3.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "sample-endpoints-catalog",
+  "description": "Example generic endpoint catalog for universal API integration tests",
+  "endpoints": [
+    {
+      "name": "Root Health / Landing",
+      "route": "/",
+      "method": "GET",
+      "expectedStatus": [200, 301, 302, 401]
+    },
+    {
+      "name": "Swagger / OpenAPI Discovery",
+      "route": "/swagger/index.html",
+      "method": "GET",
+      "expectedStatus": [200, 401, 404]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+qa-results/
+qa-hyu-*.log
+node_modules/
+cypress.env.json
+.env
+.env.*
+!.env.example
+
+# Cypress artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+# Graft context graph cache
+graft/
